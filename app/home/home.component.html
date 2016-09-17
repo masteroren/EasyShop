@@ -1,3 +1,4 @@
 <StackLayout>
-    <Label text="Easy Shop" class="title"></Label>
+    <Button text="Scan a store" class="title" (tap)="scanStore()"></Button>
+    <Label text="{{ storeBarcode }}"></Label>
 </StackLayout>

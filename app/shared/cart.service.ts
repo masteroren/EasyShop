@@ -6,15 +6,15 @@ import { Product } from "./product.model";
 export class CartService{
     cartItems: {};
 
-    getCartItems(){
+    getItems(){
         return this.cartItems;
     }
 
-    add(barcode, product){
+    addItem(barcode, product){
         this.cartItems[barcode] = product;
     }
 
-    remove(barcode){
+    removeItem(barcode){
         delete this.cartItems[barcode];
     }
 }

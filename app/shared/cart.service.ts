@@ -7,14 +7,14 @@ export class CartService{
     cartItems: {};
 
     getCartItems(){
-
+        return this.cartItems;
     }
 
-    add(){
-
+    add(barcode, product){
+        this.cartItems[barcode] = product;
     }
 
-    remove(){
-
+    remove(barcode){
+        delete this.cartItems[barcode];
     }
 }

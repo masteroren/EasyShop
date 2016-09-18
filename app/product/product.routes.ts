@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { ProductComponent } from "./product.component";
 
-const homeRoutes: Routes = [
+const productRoutes: Routes = [
     { path: "product", component: ProductComponent }
 ]
-export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);
+export const productRouting: ModuleWithProviders = RouterModule.forChild(productRoutes);

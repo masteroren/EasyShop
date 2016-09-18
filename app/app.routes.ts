@@ -1,3 +1,3 @@
 export const appRoutes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" }
+    { path: "", redirectTo: "/product", pathMatch: "full" },
 ];

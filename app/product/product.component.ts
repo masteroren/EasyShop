@@ -7,5 +7,7 @@ import { ScanService } from "../shared/scan.service";
     providers:[ScanService]
 })
 export class ProductComponent{
-    
+    scanProduct(){
+        
+    }
 }

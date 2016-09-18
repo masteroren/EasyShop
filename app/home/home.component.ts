@@ -7,11 +7,15 @@ import { ScanService } from "../shared/scan.service";
     providers:[ScanService]
 })
 export class HomeComponent{
-    storeBarcode: any;
+    storeBarcode: string;
+    storeExist: boolean = false;
 
     constructor(private scanService: ScanService){}
 
     scanStore(){
-        this.scanService.scan();
+        this.scanService.scan().then((result) => {
+            this.storeBarcode = result;
+            this.storeExist = true;
+        });
     }
 }

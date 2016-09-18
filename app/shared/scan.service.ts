@@ -4,15 +4,15 @@ import barcodescannerModule = require("nativescript-barcodescanner");
 @Injectable()
 export class ScanService{
 
-    scan() {
-        barcodescannerModule.scan({
+    scan(): Promise<string>{
+        return barcodescannerModule.scan({
             cancelLabel: "Stop scanning",
             message: "Go scan something",
             preferFrontCamera: false,
             showFlipCameraButton: true
         }).then((result) => {
-            console.log("Barcode text: " + result.text);
-            // return result.text;
+            console.log("Barcode: " + result.text);
+            return Promise.resolve(result.text);
         }, (error) => {
             console.log("No scan: " + error);
         });

@@ -4,17 +4,17 @@ import { Product } from "./product.model";
 
 @Injectable()
 export class CartService{
-    cartItems: {};
+    products: {};
 
     getItems(){
-        return this.cartItems;
+        return this.products;
     }
 
     addItem(barcode, product){
-        this.cartItems[barcode] = product;
+        this.products[barcode] = product;
     }
 
     removeItem(barcode){
-        delete this.cartItems[barcode];
+        delete this.products[barcode];
     }
 }

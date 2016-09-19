@@ -11,7 +11,7 @@ import { ProductModule } from "./product/product.module";
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
-        // NativeScriptModule,
+        NativeScriptModule,
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(appRoutes),
         HomeModule,

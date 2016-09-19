@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
+import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 
 @Component({
     selector: 'home',
@@ -10,12 +11,17 @@ export class HomeComponent{
     storeBarcode: string;
     storeExist: boolean = true;
 
-    constructor(private scanService: ScanService){}
+    constructor(private scanService: ScanService, 
+        private routerExtensions: RouterExtensions){}
 
     scanStore(){
         this.scanService.scan().then((result) => {
             this.storeBarcode = result;
             this.storeExist = true;
         });
+    }
+
+    goToProduct(){
+        this.routerExtensions.navigate(["/product"]);
     }
 }

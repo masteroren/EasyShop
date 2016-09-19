@@ -9,15 +9,17 @@ import { HomeModule } from "./home/home.module";
 import { ProductModule } from "./product/product.module";
 
 @NgModule({
+    bootstrap: [AppComponent],
     imports: [
-        NativeScriptModule,
+        // NativeScriptModule,
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(appRoutes),
         HomeModule,
         ProductModule
     ],
-    declarations: [AppComponent],
-    bootstrap: [AppComponent],
+    declarations: [
+        AppComponent
+    ]
 })
 export class AppModule {}
 

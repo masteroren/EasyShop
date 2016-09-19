@@ -2,17 +2,16 @@ import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { NgModule } from "@angular/core";
-import { homeRouting } from "./home.routes";
 import { HomeComponent } from "./home.component";
 
 @NgModule({
   imports: [
     NativeScriptModule,
     NativeScriptFormsModule,
-    homeRouting
   ],
+  exports: [HomeComponent],
   declarations: [
-    HomeComponent,
+    HomeComponent
   ]
 })
 export class HomeModule {}

@@ -9,7 +9,7 @@ import { RouterExtensions } from "nativescript-angular/router/router-extensions"
 })
 export class HomeComponent{
     storeBarcode: string;
-    storeExist: boolean = true;
+    storeExist: boolean = false;
 
     constructor(private scanService: ScanService, 
         private routerExtensions: RouterExtensions){}

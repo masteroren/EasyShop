@@ -1,12 +1,14 @@
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-
+import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
 import { HomeComponent } from "./home.component";
 
+
 @NgModule({
-  exports: [HomeComponent],
-  declarations: [
-    HomeComponent
-  ]
+    imports: [CommonModule],
+    exports: [HomeComponent],
+    declarations: [
+        HomeComponent
+    ]
 })
 export class HomeModule {}

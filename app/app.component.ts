@@ -11,7 +11,6 @@ export class AppComponent {
     constructor(private routerExtensions: RouterExtensions){}
 
     config(args: observable.EventData){
-        console.log("config");
         this.routerExtensions.navigate(['/config']);
     }
 }

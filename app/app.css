@@ -16,4 +16,16 @@ button {
     color: #284848;
     text-align: center;
     margin: 0 20;
-} 
+}
+
+.odd {
+    background-color: red;
+}
+
+.even {
+    background-color: blue;
+}
+
+.list-view{
+    background-color: hotpink;
+}

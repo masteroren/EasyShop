@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-
+import { PRODUCTSTOBUY } from "../product/productListToBuy";
 import { Product } from "./product.model";
 
 @Injectable()
 export class CartService{
-    products: {};
+    products = PRODUCTSTOBUY;
 
     getItems(){
         return this.products;

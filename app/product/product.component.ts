@@ -24,17 +24,28 @@ export class ProductComponent {
         }
     };
 
-
-    public onItemTap(args) {
-        console.log("------------------------ ItemTapped: " + args.index);
-    }
+    //
+    //public onItemTap(args) {
+    //    console.log("------------------------ ItemTapped: " + args.index);
+    //}
 
     public scanProduct() {
         this.scanService.scan().then((result) => {
             this.itemBarcode = result;
             //check if the the barcode is in the super
-            //add to the list
             this.isItemExist = true;
+            //save the scaned product
+
+            if (this.isItemExist && this.itemBarcode != null)
+            {
+                this.myItems.push(new Product("לחם",  5, this.itemBarcode));
+
+            }
+
+            for(let index = 0; index < this.myItems.length; index++){
+                console.log(this.myItems[index].name);
+            }
+
         });
 
     }

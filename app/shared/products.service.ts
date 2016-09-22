@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ScanService } from "./scan.service";
 
-import { PRODUCTS } from "./products_mock";
+import { PRODUCTS } from "./mocks/products_mock";
 
 @Injectable()
 export class productsService{

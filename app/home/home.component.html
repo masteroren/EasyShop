@@ -1,4 +1,5 @@
-<StackLayout>
-    <Button text="Scan a store" class="title" (tap)="scanStore()"></Button>
-    <Label class="welcome" text="{{ storeName }}"></Label>
+<StackLayout width="200">
+    <TextView text="{{ welcomText }}" class="scan-text" editable="false" isUserInteractionEnabled="false" isEnabled="false">
+    </TextView>
+    <Button text="סרוק" class="scan-btn" (tap)="scanStore()"></Button>
 </StackLayout>

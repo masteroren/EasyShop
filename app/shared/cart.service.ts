@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { PRODUCTSTOBUY } from "../product/productListToBuy";
-import { Product } from "./product.model";
+import { Product } from "./models/product.model";
 
 @Injectable()
 export class CartService{

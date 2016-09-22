@@ -19,9 +19,16 @@ export class HomeComponent{
     storeName: string;
     store: StoreModel;
 
+    welcomText: string;
+
     constructor(private scanService: ScanService, 
         private routerExtensions: RouterExtensions,
         private storeService: StoreService){}
+
+    ngOnInit(){
+        console.log("Home -> Init");
+        this.welcomText = "סרוק את הברקוד בכניסה לסופר";
+    }
 
     scanStore(){
         this.scanService.scan().then((barcode) => {
@@ -37,8 +44,4 @@ export class HomeComponent{
             }
         });
     }
-
-    // goToProduct(){
-    //     this.routerExtensions.navigate(["/product"]);
-    // }
 }

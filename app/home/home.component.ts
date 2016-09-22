@@ -11,33 +11,26 @@ import { StoreModel } from "../shared/models/store.model";
     selector: 'home',
     templateUrl: 'home/home.component.html',
     styleUrls: ['home/home.css'],
-    providers:[ScanService, StoreService]
+    providers: [ScanService, StoreService]
 })
-export class HomeComponent{
-    storeBarcode: string;
-    storeExist: boolean = false;
-    storeName: string;
+export class HomeComponent {
     store: StoreModel;
 
     welcomText: string;
 
-    constructor(private scanService: ScanService, 
+    constructor(private scanService: ScanService,
         private routerExtensions: RouterExtensions,
-        private storeService: StoreService){}
+        private storeService: StoreService) { }
 
-    ngOnInit(){
+    ngOnInit() {
         console.log("Home -> Init");
-        this.welcomText = "סרוק את הברקוד בכניסה לסופר";
+        this.welcomText = "סרוק את הברקוד בכניסה לסופר ובוא נתחיל לתקתק את הקניות!";
     }
 
-    scanStore(){
+    scanStore() {
         this.scanService.scan().then((barcode) => {
             this.store = this.storeService.getStore(barcode)
-            if (this.store){
-                this.storeBarcode = this.store.barcode;
-                this.storeExist = true;
-                this.storeName = "Welcom to " + this.store.name;
-
+            if (this.store) {
                 timer.setTimeout(() => {
                     this.routerExtensions.navigate(["/product"]);
                 }, 2000);

@@ -12,12 +12,14 @@ export class ConfigComponent {
         console.log('ConfigComponent constructor -> ' + this.configService.model.showBonuses);
     }
 
-    bonusTap() {
-        if (this.configService.model.showBonuses === false)
-            this.configService.model.showBonuses = true;
-        else
-            this.configService.model.showBonuses = false;
-        console.log('Bonuses tapped -> ' + this.configService.model.showBonuses);
+    bonusChange(checked) {
+        this.configService.model.showBonuses = checked;
+        console.log('Bonuses changed -> ' + this.configService.model.showBonuses);
+    }
+
+    nutritionChange(checked) {
+        this.configService.model.showNutrition = checked;
+        console.log('Nutrition changed -> ' + this.configService.model.showNutrition);
     }
 }
 

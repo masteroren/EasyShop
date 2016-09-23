@@ -1,6 +1,10 @@
-<GridLayout columns="100, *" rows="40,40" horizontalAlignment="stretch" padding="10">
-    <Switch row="0" col="0" [checked]="configService.model.showBonuses" horizontalAligment="left" (tap)="bonusTap()"></Switch>
-    <Label row="0" col="1" text="הצג מבצעים" verticalAlignment="center" horizontalAligment="right"></Label>
-    <Switch row="1" col="0" [checked]="configService.model.showNutrition" horizontalAligment="left"></Switch>
-    <Label row="1" col="1" text="רגישות למזון" verticalAlignment="center"></Label>
-</GridLayout>
+<StackLayout>
+    <GridLayout columns="100, *" rows="40" horizontalAlignment="stretch" padding="10" backgroundColor="orange">
+        <Switch #sw1 row="0" col="0" [checked]="configService.model.showBonuses" horizontalAligment="left" (checkedChange)="bonusChange(sw1.checked)"></Switch>
+        <Label row="0" col="1" class="config-label" text="הצג מבצעים" verticalAlignment="center" horizontalAligment="right"></Label>
+    </GridLayout>
+    <GridLayout columns="100, *" rows="40" horizontalAlignment="stretch" padding="10">
+        <Switch #sw2 col="0" [checked]="configService.model.showNutrition" horizontalAligment="left" (checkedChange)="nutritionChange(sw2.checked)"></Switch>
+        <Label col="1" class="config-label" text="רגישות למזון" verticalAlignment="center"></Label>
+    </GridLayout>
+</StackLayout>

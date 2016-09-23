@@ -1,10 +1,15 @@
 export class ConfigModel {
-    showBonuses: boolean;
-    showNutrition: boolean;
+    bonuses: boolean;
+    nutrition: boolean;
+    gloten: boolean;
+    alchohol: boolean;
+    soy: boolean;
 
-    constructor(showBonuses: boolean, showNutrition: boolean){
-        this.showBonuses = showBonuses;
-        this.showNutrition = showNutrition;
+    constructor(showBonuses: boolean, showNutrition: boolean) {
+        this.bonuses = showBonuses;
+        this.nutrition = showNutrition;
+        this.gloten = false;
+        this.alchohol = false;
+        this.soy = false;
     }
 }
-    

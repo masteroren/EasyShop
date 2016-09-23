@@ -9,17 +9,17 @@ import { ConfigService } from "./config.service";
 export class ConfigComponent {
 
     constructor(public configService: ConfigService) {
-        console.log('ConfigComponent constructor -> ' + this.configService.model.showBonuses);
+        console.log('ConfigComponent constructor -> ' + this.configService.model.bonuses);
     }
 
     bonusChange(checked) {
-        this.configService.model.showBonuses = checked;
-        console.log('Bonuses changed -> ' + this.configService.model.showBonuses);
+        this.configService.model.bonuses = checked;
+        console.log('Bonuses changed -> ' + this.configService.model.bonuses);
     }
 
     nutritionChange(checked) {
-        this.configService.model.showNutrition = checked;
-        console.log('Nutrition changed -> ' + this.configService.model.showNutrition);
+        this.configService.model.nutrition = checked;
+        console.log('Nutrition changed -> ' + this.configService.model.nutrition);
     }
 }
 

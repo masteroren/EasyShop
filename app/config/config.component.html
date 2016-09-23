@@ -1,3 +1,6 @@
-<StackLayout>
-    <Label text="Put config here..."></Label>
-</StackLayout>
+<GridLayout columns="100, *" rows="40,40" horizontalAlignment="stretch" padding="10">
+    <Switch row="0" col="0" [checked]="configService.model.showBonuses" horizontalAligment="left" (tap)="bonusTap()"></Switch>
+    <Label row="0" col="1" text="הצג מבצעים" verticalAlignment="center" horizontalAligment="right"></Label>
+    <Switch row="1" col="0" [checked]="configService.model.showNutrition" horizontalAligment="left"></Switch>
+    <Label row="1" col="1" text="רגישות למזון" verticalAlignment="center"></Label>
+</GridLayout>

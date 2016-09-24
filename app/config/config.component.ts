@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { ConfigService } from "./config.service";
 
+import { Page } from "ui/page";
+
+
 @Component({
     selector: 'config',
     templateUrl: 'config/config.component.html',
@@ -8,18 +11,16 @@ import { ConfigService } from "./config.service";
 })
 export class ConfigComponent {
 
-    constructor(public configService: ConfigService) {
-        console.log('ConfigComponent constructor -> ' + this.configService.model.bonuses);
+    constructor(public configService: ConfigService, page: Page) {
+        page.actionBar.title = "Easy Shop"; 
     }
 
     bonusChange(checked) {
         this.configService.model.bonuses = checked;
-        console.log('Bonuses changed -> ' + this.configService.model.bonuses);
     }
 
     nutritionChange(checked) {
         this.configService.model.nutrition = checked;
-        console.log('Nutrition changed -> ' + this.configService.model.nutrition);
     }
 }
 

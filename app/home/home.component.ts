@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
+import { Page } from "ui/page";
 
 import timer = require("timer");
 
@@ -16,9 +17,9 @@ import { StoreModel } from "../shared/models/store.model";
 export class HomeComponent {
     store: StoreModel;
 
-    constructor(private scanService: ScanService,
-        private routerExtensions: RouterExtensions,
-        private storeService: StoreService) { }
+    constructor(private scanService: ScanService, private routerExtensions: RouterExtensions, private storeService: StoreService, page: Page) {
+        page.actionBar.title = "Easy Shop"; 
+    }
 
     ngOnInit() {
         console.log("Home -> Init");

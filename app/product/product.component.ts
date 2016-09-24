@@ -17,7 +17,6 @@ import { ListView } from "ui/list-view";
 export class ProductComponent {
     public itemBarcode: string;
     public isItemExist: boolean = false;
-    public itemsString;
 
     listView: ListView;
 
@@ -28,7 +27,6 @@ export class ProductComponent {
     ngOnInit() {
         this.page.id = "listItemsPage";
         this.listView = this.page.getViewById("items-view") as ListView;
-        // this.itemsString = new observableArrayModule.ObservableArray(products);
         this.listView.itemTemplate = `
             <StackLayout>
                 <Label text='{{ name }}'></Label>
@@ -49,7 +47,10 @@ export class ProductComponent {
             this.isItemExist = true;
 
             // For test
-            // this.itemsString.push("לחם שחור");
+            this.listView.items.push({
+                name: "לחם שחור",
+                price: 3.5
+            });
         });
 
     }

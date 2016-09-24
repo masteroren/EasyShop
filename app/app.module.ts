@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { HomeModule } from "./home/home.module";
 import { ProductModule } from "./product/product.module";
 import { ConfigModule } from "./config/config.module";
+import { ProductDetailsModule } from "./productDetails/productDetails.module";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -17,7 +18,8 @@ import { ConfigModule } from "./config/config.module";
         NativeScriptRouterModule.forRoot(appRoutes),
         HomeModule,
         ProductModule,
-        ConfigModule
+        ConfigModule,
+        ProductDetailsModule
     ],
     declarations: [
         AppComponent

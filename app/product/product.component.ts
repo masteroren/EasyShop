@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { Product } from "./product";
@@ -6,6 +6,8 @@ import { Product } from "./product";
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";
 
+import { ListView } from "ui/list-view";
+import { SetupItemViewArgs } from "nativescript-angular/directives";
 
 @Component({
     selector: 'home',
@@ -20,14 +22,23 @@ export class ProductComponent {
     public isItemExist: boolean = false;
     public itemsString;
 
-    constructor(private cartService:CartService, private scanService:ScanService, page: Page){
-        page.actionBar.title = "Easy Shop"; 
+    listView: ListView;
 
-        let products = cartService.getItems().map((product) => {
-            return product.name;
-        });
+    constructor(private cartService: CartService, private scanService: ScanService, public page: Page) {
+        page.actionBar.title = "Easy Shop";
+    }
 
-        this.itemsString = new observableArrayModule.ObservableArray(products);
+    ngOnInit() {
+        this.page.id = "listItemsPage";
+        this.listView = this.page.getViewById("items-view") as ListView;
+        // this.itemsString = new observableArrayModule.ObservableArray(products);
+        this.listView.itemTemplate = `
+            <StackLayout>
+                <Label text='{{ name }}'></Label>
+                <Label text='{{ price }}'></Label>
+            </StackLayout>
+        `;
+        this.listView.items = new observableArrayModule.ObservableArray(this.cartService.getItems());;
     }
 
     public onItemTap(args) {
@@ -45,6 +56,8 @@ export class ProductComponent {
         });
 
     }
+
+
 
 }
 

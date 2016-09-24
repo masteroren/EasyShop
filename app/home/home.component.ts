@@ -9,9 +9,9 @@ import { StoreService } from "../shared/store.service";
 import { StoreModel } from "../shared/models/store.model";
 
 @Component({
-    selector: 'home',
+    selector: 'app-home',
     templateUrl: 'home/home.component.html',
-    styleUrls: ['home/home.css'],
+    styleUrls: ['home/home.css'], 
     providers: [ScanService, StoreService]
 })
 export class HomeComponent {

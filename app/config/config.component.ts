@@ -5,7 +5,7 @@ import { Page } from "ui/page";
 
 
 @Component({
-    selector: 'config',
+    selector: 'app-config',
     templateUrl: 'config/config.component.html',
     styleUrls: ['config/config.css']
 })

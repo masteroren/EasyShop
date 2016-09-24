@@ -5,13 +5,10 @@ import { Product } from "./product";
 
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";
-
 import { ListView } from "ui/list-view";
-import { SetupItemViewArgs } from "nativescript-angular/directives";
 
 @Component({
-    selector: 'home',
-    styleUrls: ['app.css'],
+    selector: 'app-product',
     templateUrl: 'product/product.component.html',
     providers: [ScanService, CartService],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,7 +23,7 @@ export class ProductComponent {
 
     constructor(private cartService: CartService, private scanService: ScanService, public page: Page) {
         page.actionBar.title = "Easy Shop";
-    }
+    } 
 
     ngOnInit() {
         this.page.id = "listItemsPage";
@@ -52,7 +49,7 @@ export class ProductComponent {
             this.isItemExist = true;
 
             // For test
-            this.itemsString.push("לחם שחור");
+            // this.itemsString.push("לחם שחור");
         });
 
     }

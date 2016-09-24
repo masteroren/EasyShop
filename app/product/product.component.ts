@@ -2,7 +2,9 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { Product } from "./product";
+
 import observableArrayModule = require("data/observable-array");
+import { Page } from "ui/page";
 
 
 @Component({
@@ -18,7 +20,9 @@ export class ProductComponent {
     public isItemExist: boolean = false;
     public itemsString;
 
-    constructor(private cartService:CartService, private scanService:ScanService){
+    constructor(private cartService:CartService, private scanService:ScanService, page: Page){
+        page.actionBar.title = "Easy Shop"; 
+
         let products = cartService.getItems().map((product) => {
             return product.name;
         });

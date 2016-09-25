@@ -1,0 +1,16 @@
+.switch{
+    margin-top: 30px;
+}
+
+.config-item-container{
+    background-color: orange;
+}
+
+.config-label{
+    font-size: 20px;
+    text-align: right;
+}
+
+.nutrition-details{
+    border: 1px solid black;
+}

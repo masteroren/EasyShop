@@ -1,7 +1,12 @@
-
-<StackLayout>
-    <Button text="Scan a store" class="title" (tap)="scanStore()"></Button>
-    <Label text="{{ storeBarcode }}"></Label>
-
-    <Button *ngIf="storeExist" text="Start buying" (tap)="goToProduct()"></Button>
-</StackLayout>
+<GridLayout columns="auto" rows="auto,auto" horizontalAlignment="center">
+    <!--Row 1-->
+    <StackLayout row="0" col="0" class="scan-text">
+        <Label text="סרוק את הברקוד"></Label>
+        <Label text="בכניסה לסופר"></Label>
+        <Label text="ובוא נתחיל"></Label>
+        <Label text="לתקתק את"></Label>
+        <Label text="הקניות!"></Label>
+    </StackLayout>
+    <!--Row 2-->
+    <Button row="1" col="0" text="סרוק" class="scan-btn" borderRadius="20" (tap)="scanStore()"></Button>
+</GridLayout>

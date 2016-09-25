@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
+import { ConfigService } from "./config.service";
 import { ConfigComponent } from "./config.component";
-import { ConfigService } from "../shared/config.service";
 
 @NgModule({
   exports: [ConfigComponent],
   declarations: [
     ConfigComponent,
   ],
-  providers: [ConfigService]
+  providers:[ConfigService]
 })
-export class ConfigModule {}
+export class ConfigModule { }

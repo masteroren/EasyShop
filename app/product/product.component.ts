@@ -1,54 +1,61 @@
-import { Component } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { Product } from "./product";
 
+import observableArrayModule = require("data/observable-array");
+import { Page } from "ui/page";
+import { ListView } from "ui/list-view";
 
 @Component({
-    selector: 'home',
-    styleUrls: ['app.css'],
+    selector: 'app-product',
     templateUrl: 'product/product.component.html',
-    providers: [ScanService, CartService]
+    providers: [ScanService, CartService],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ProductComponent {
-    public myItems :Product[] ;
-    public itemsString:Array<string> = [];
     public itemBarcode: string;
     public isItemExist: boolean = false;
 
-    constructor(private cartService:CartService, private scanService:ScanService) {
-        this.myItems = cartService.getItems();
-        for(let index = 0; index < this.myItems.length; index++){
-            this.itemsString.push(this.myItems[index].name);
-        }
-    };
+    listView: ListView;
 
-    //
-    //public onItemTap(args) {
-    //    console.log("------------------------ ItemTapped: " + args.index);
-    //}
+    constructor(private cartService: CartService, private scanService: ScanService, public page: Page) {
+        page.actionBar.title = "Easy Shop";
+    } 
+
+    ngOnInit() {
+        this.page.id = "listItemsPage";
+        this.listView = this.page.getViewById("items-view") as ListView;
+        this.listView.itemTemplate = `
+            <StackLayout>
+                <Label text='{{ name }}'></Label>
+                <Label text='{{ price }}'></Label>
+            </StackLayout>
+        `;
+        this.listView.items = new observableArrayModule.ObservableArray(this.cartService.getItems());;
+    }
+
+    public onItemTap(args) {
+        console.log("------------------------ ItemTapped: " + args.index);
+    }
 
     public scanProduct() {
         this.scanService.scan().then((result) => {
             this.itemBarcode = result;
-            //check if the the barcode is in the super
+            //check if the
             this.isItemExist = true;
-            //save the scaned product
 
-            if (this.isItemExist && this.itemBarcode != null)
-            {
-                this.myItems.push(new Product("לחם",  5, this.itemBarcode));
-
-            }
-
-            for(let index = 0; index < this.myItems.length; index++){
-                console.log(this.myItems[index].name);
-            }
-
+            // For test
+            this.listView.items.push({
+                name: "לחם שחור",
+                price: 3.5
+            });
         });
 
     }
+
+
 
 }
 

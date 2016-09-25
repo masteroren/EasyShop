@@ -2,13 +2,7 @@
     <Button text="Scan a product" class="title" (tap)="scanProduct()"></Button>
 
     <!---->
-    <ListView [items]="itemsString"  >
-        <template let-item="item" >
-            <StackLayout >
-                <Label [text]='item.name'></Label>
-            </StackLayout>
-        </template>
+    <ListView id="items-view">
     </ListView>
-
 
 </StackLayout>

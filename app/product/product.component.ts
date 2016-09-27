@@ -40,7 +40,6 @@ export class ProductComponent {
                 <Label text='{{ price }}'></Label>
             </StackLayout>
         `;
-        this.listView.items = new observableArrayModule.ObservableArray(this.cartService.getItems());;
     }
 
     public onItemTap(args) {
@@ -51,6 +50,8 @@ export class ProductComponent {
         this.scanService.scan().then((result) => {
             let product = this.productsService.search(result);
             this.listView.items.push(product);
+
+            // Add item to the cart
         });
 
     }

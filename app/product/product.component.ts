@@ -40,6 +40,7 @@ export class ProductComponent {
                 <Label text='{{ price }}'></Label>
             </StackLayout>
         `;
+        this.listView.items = new observableArrayModule.ObservableArray([]);
     }
 
     public onItemTap(args) {

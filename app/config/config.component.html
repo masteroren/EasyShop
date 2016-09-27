@@ -1,20 +1,24 @@
 <StackLayout>
-    <GridLayout columns="50, *" rows="40" horizontalAlignment="stretch" padding="10">
-        <Switch #sw1 row="0" col="0" [checked]="configService.model.bonuses" (checkedChange)="bonusChange(sw1.checked)"></Switch>
-        <Label row="0" col="1" class="config-label" text="הצג מבצעים" verticalAlignment="center" horizontalAligment="right"></Label>
+    <GridLayout columns="50,*" rows="40" horizontalAlignment="stretch" padding="10">
+        <Switch #sw1 col="0" [checked]="configService.model.bonuses" (checkedChange)="bonusChange(sw1.checked)"></Switch>
+        <Label col="1" class="config-label" text="הצג מבצעים" verticalAlignment="center" horizontalAligment="right"></Label>
     </GridLayout>
-    <GridLayout columns="50, *" rows="40" horizontalAlignment="stretch" padding="10">
+    <GridLayout columns="50,*" rows="40" horizontalAlignment="stretch" padding="10">
         <Switch #sw2 col="0" [checked]="configService.model.nutrition" (checkedChange)="nutritionChange(sw2.checked)"></Switch>
         <Label col="1" class="config-label" text="רגישות למזון" verticalAlignment="center"></Label>
     </GridLayout>
-    <GridLayout columns="50, *" rows="40,40,40" horizontalAlignment="stretch" padding="10" borderWidth="2" borderColor="silver">
-        <Switch #sw3 row="0" col="0" [checked]="configService.model.gloten" (checkedChange)="configService.model.gloten = sw3.checked"></Switch>
-        <Label row="0" col="1" class="config-label" text="גלוטן" horizontalAligment="center"></Label>
-        
-        <Switch #sw4 row="1" col="0" [checked]="configService.model.alchohol" (checkedChange)="configService.model.alchohol = sw4.checked"></Switch>
-        <Label row="1" col="1" class="config-label" text="אלכוהול" horizontalAligment="center"></Label>
-        
-        <Switch #sw5 row="2" col="0" [checked]="configService.model.soy" (checkedChange)="configService.model.soy = sw5.checked"></Switch>
-        <Label row="2" col="1" class="config-label" text="סויה" horizontalAligment="center"></Label>
-    </GridLayout>
-</StackLayout> 
+    <StackLayout id="nutrition-types">
+        <GridLayout columns="50,*" rows="40" horizontalAlignment="stretch" padding="10">
+            <Switch #sw3 col="0" [checked]="configService.model.gloten" (checkedChange)="configService.model.gloten = sw3.checked"></Switch>
+            <Label col="1" class="config-label" text="גלוטן" horizontalAligment="center"></Label>
+        </GridLayout>
+        <GridLayout columns="50,*" rows="40" horizontalAlignment="stretch" padding="10">
+            <Switch #sw4 col="0" [checked]="configService.model.alchohol" (checkedChange)="configService.model.alchohol = sw4.checked"></Switch>
+            <Label col="1" class="config-label" text="אלכוהול" horizontalAligment="center"></Label>
+        </GridLayout>
+        <GridLayout columns="50,*" rows="40,40,40" horizontalAlignment="stretch" padding="10">
+            <Switch #sw5 col="0" [checked]="configService.model.soy" (checkedChange)="configService.model.soy = sw5.checked"></Switch>
+            <Label col="1" class="config-label" text="סויה" horizontalAligment="center"></Label>
+        </GridLayout>
+    </StackLayout>
+</StackLayout>

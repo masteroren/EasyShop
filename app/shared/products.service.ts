@@ -4,7 +4,7 @@ import { ScanService } from "./scan.service";
 import { PRODUCTS } from "./mocks/products_mock";
 
 @Injectable()
-export class productsService{
+export class ProductsService{
     constructor(private scanService: ScanService){
 
     }

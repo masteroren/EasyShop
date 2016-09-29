@@ -56,10 +56,8 @@ export class ProductComponent {
         this.scanService.scan().then((result) => {
             let product = this.productsService.search(result);
             this.listView.items.push(product);
+            this.routerExtensions.navigate(["/productDetails/" + result]);
 
-
-          //  this.routerExtensions.navigate(["/product"], {productObj: product});
-            // Add item to the cart
         });
 
     }

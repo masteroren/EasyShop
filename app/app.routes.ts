@@ -1,6 +1,7 @@
 import { HomeComponent } from "./home/home.component";
 import { ProductComponent } from "./product/product.component";
-import { ConfigComponent} from "./config/config.component";
+import { ConfigComponent } from "./config/config.component";
+import { ProductDetailsComponent } from "./productDetails/productDetails.component";
 
 export const appRoutes = [
     {
@@ -19,5 +20,9 @@ export const appRoutes = [
     {
         path: "config",
         component: ConfigComponent
+    },
+    {
+        path: "productDetails",
+        component: ProductDetailsComponent
     }
 ];

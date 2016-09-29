@@ -17,6 +17,7 @@ import { ListView } from "ui/list-view";
         CartService,
         ProductsService
     ],
+    styleUrls: ['product/product.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -38,8 +39,10 @@ export class ProductComponent {
         this.listView = this.page.getViewById("items-view") as ListView;
         this.listView.itemTemplate = `
             <StackLayout>
-                <Label text='{{ name }}'></Label>
-                <Label text='{{ price }}'></Label>
+                <GridLayout rows="40" columns="50,*" horizontalAlignment="stretch">
+                    <Label row="0" col="0" text='{{ price }}' horizonalAlignment="right"></Label>
+                    <Label row="0" col="1" class="product-name" text='{{ name }}' horizonalAlignment="left"></Label>
+                </GridLayout>
             </StackLayout>
         `;
         this.listView.items = new observableArrayModule.ObservableArray([]);

@@ -1,6 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
+import { ProductsService } from "../shared/products.service";
 import { Product } from "./product";
 
 import observableArrayModule = require("data/observable-array");
@@ -10,7 +11,11 @@ import { ListView } from "ui/list-view";
 @Component({
     selector: 'app-product',
     templateUrl: 'product/product.component.html',
-    providers: [ScanService, CartService],
+    providers: [
+        ScanService,
+        CartService,
+        ProductsService
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -20,9 +25,11 @@ export class ProductComponent {
 
     listView: ListView;
 
-    constructor(private cartService: CartService, private scanService: ScanService, public page: Page) {
+    constructor(private cartService: CartService, private scanService: ScanService,
+        private productsService: ProductsService, public page: Page) {
+
         page.actionBar.title = "Easy Shop";
-    } 
+    }
 
     ngOnInit() {
         this.page.id = "listItemsPage";
@@ -33,7 +40,7 @@ export class ProductComponent {
                 <Label text='{{ price }}'></Label>
             </StackLayout>
         `;
-        this.listView.items = new observableArrayModule.ObservableArray(this.cartService.getItems());;
+        this.listView.items = new observableArrayModule.ObservableArray([]);
     }
 
     public onItemTap(args) {
@@ -42,15 +49,10 @@ export class ProductComponent {
 
     public scanProduct() {
         this.scanService.scan().then((result) => {
-            this.itemBarcode = result;
-            //check if the
-            this.isItemExist = true;
+            let product = this.productsService.search(result);
+            this.listView.items.push(product);
 
-            // For test
-            this.listView.items.push({
-                name: "לחם שחור",
-                price: 3.5
-            });
+            // Add item to the cart
         });
 
     }

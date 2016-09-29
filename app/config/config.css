@@ -2,13 +2,16 @@
     margin-top: 30px;
 }
 
+.cell{
+    background-color: gray;
+}
+
 .config-item-container{
     background-color: orange;
 }
 
 .config-label{
     font-size: 20px;
-    text-align: right;
 }
 
 .nutrition-details{

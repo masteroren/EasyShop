@@ -1,6 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
-import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 import { CartService } from "../shared/cart.service";
 import { ProductsService } from "../shared/products.service";
 import { Product } from "./product";
@@ -8,6 +7,8 @@ import { Product } from "./product";
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";
 import { ListView } from "ui/list-view";
+import dockModule = require("ui/layouts/dock-layout");
+import observable = require("data/observable");
 
 @Component({
     selector: 'app-product',
@@ -27,14 +28,15 @@ export class ProductComponent {
 
     listView:ListView;
 
-    constructor(private cartService:CartService, private scanService:ScanService, private routerExtensions:RouterExtensions,
-                private productsService:ProductsService, public page:Page) {
+    //total;
+
+    constructor(public cartService: CartService, private scanService: ScanService,
+        private productsService: ProductsService, public page: Page) {
 
         page.actionBar.title = "Easy Shop";
     }
 
     ngOnInit() {
-
         this.page.id = "listItemsPage";
         this.listView = this.page.getViewById("items-view") as ListView;
         this.listView.itemTemplate = `
@@ -55,12 +57,14 @@ export class ProductComponent {
     public scanProduct() {
         this.scanService.scan().then((result) => {
             let product = this.productsService.search(result);
+            this.cartService.addItem(result, product);
             this.listView.items.push(product);
             this.routerExtensions.navigate(["/productDetails/" + result]);
 
         });
 
     }
+
 
 
 }

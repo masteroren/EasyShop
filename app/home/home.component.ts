@@ -26,6 +26,8 @@ export class HomeComponent {
 
     ngOnInit() {
         console.log("Home -> Init");
+        this.routerExtensions.navigate(["/productDetails/" + 673419133999]);
+
     }
 
     scanStore() {

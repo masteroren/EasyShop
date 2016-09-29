@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Params } from '@angular/router';
+import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { ProductsService } from "../shared/products.service";
@@ -18,7 +19,7 @@ export class ProductDetailsComponent{
     public itemBarcode:string;
     public itemName:string;
 
-    constructor(private _activatedRoute: ActivatedRoute, private productsService:ProductsService){}
+    constructor(private _activatedRoute: ActivatedRoute, private productsService:ProductsService,  private routerExtensions:RouterExtensions){}
 
     ngOnInit() {
         console.log("details page");
@@ -30,5 +31,9 @@ export class ProductDetailsComponent{
         let product = this.productsService.search(this.itemBarcode);
         this.itemName = product.name;
         console.log("product name: " + product.name);
-    };
+    }
+
+    addProductToCart(){
+        this.routerExtensions.navigate(["/product"]);
+    }
 }

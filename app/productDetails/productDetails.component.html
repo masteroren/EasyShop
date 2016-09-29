@@ -1,4 +1,7 @@
-<StackLayout>
-    <Label text="דף פרטי מוצר {{itemName}}"></Label>
-    <Label text="{{itemBarcode}}"></Label>
-</StackLayout>
+<GridLayout columns="auto" rows="auto,auto" horizontalAlignment="center">
+    <StackLayout>
+        <Label text="דף פרטי מוצר {{itemName}}"></Label>
+        <Label text="{{itemBarcode}}"></Label>
+    </StackLayout>
+    <Button row="1" col="0" text="הוסף לעגלה" class="scan-btn" borderRadius="20" (tap)="addProductToCart()"></Button>
+</GridLayout>

@@ -27,7 +27,7 @@ export class HomeComponent {
 
     scanStore() {
         this.scanService.scan().then((barcode) => {
-            this.store = this.storeService.getStore(barcode)
+            this.store = this.storeService.getStore(barcode);
             if (this.store) {
                 timer.setTimeout(() => {
                     this.routerExtensions.navigate(["/product"]);

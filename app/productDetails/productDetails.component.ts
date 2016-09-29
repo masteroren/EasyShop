@@ -4,6 +4,7 @@ import { RouterExtensions } from "nativescript-angular/router/router-extensions"
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { ProductsService } from "../shared/products.service";
+import { ConfigService } from "../config/config.service";
 
 @Component({
     selector: 'product-details',
@@ -12,28 +13,37 @@ import { ProductsService } from "../shared/products.service";
     providers: [
         ScanService,
         CartService,
-        ProductsService
+        ProductsService,
+        ConfigService
     ],
 })
-export class ProductDetailsComponent{
+export class ProductDetailsComponent {
     public itemBarcode:string;
     public itemName:string;
-
-    constructor(private _activatedRoute: ActivatedRoute, private productsService:ProductsService,  private routerExtensions:RouterExtensions){}
-
-    ngOnInit() {
-        console.log("details page");
-
-        this._activatedRoute.params.forEach((param: Params) => {
-            console.log("product barcode: " + param['id']);
-            this.itemBarcode = param['id'];
-        });
-        let product = this.productsService.search(this.itemBarcode);
-        this.itemName = product.name;
-        console.log("product name: " + product.name);
+    public itemDescription:string;
+    public product: any;
+    constructor( private _activatedRoute:ActivatedRoute, private productsService:ProductsService, private routerExtensions:RouterExtensions, private userConfig:ConfigService, private userCart:CartService) {
     }
 
-    addProductToCart(){
+    ngOnInit() {
+        let salesArr;
+
+        this._activatedRoute.params.forEach((param:Params) => {
+            this.itemBarcode = param['id'];
+        });
+
+        this.product = this.productsService.search(this.itemBarcode);
+        this.itemName = this.product.name;
+
+        salesArr = this.product.details.sales;
+
+        if (this.userConfig.Config.bonuses && salesArr.length > 0) {
+            this.itemDescription = salesArr[0].description;
+        }
+    }
+
+    addProductToCart() {
+        this.userCart.addItem(this.itemBarcode, this.product);
         this.routerExtensions.navigate(["/product"]);
     }
 }

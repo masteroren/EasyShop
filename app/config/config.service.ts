@@ -7,7 +7,7 @@ export class ConfigService {
 
     constructor() {
         console.log("Config service constructor");
-        this.model = new ConfigModel(false, false);
+        this.model = new ConfigModel(true, false);
     }
 
 

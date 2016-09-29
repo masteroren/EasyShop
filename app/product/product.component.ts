@@ -3,7 +3,6 @@ import { ScanService } from "../shared/scan.service";
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 import { CartService } from "../shared/cart.service";
 import { ProductsService } from "../shared/products.service";
-import { Product } from "./product";
 
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";

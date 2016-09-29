@@ -7,6 +7,8 @@ import { Product } from "./product";
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";
 import { ListView } from "ui/list-view";
+import dockModule = require("ui/layouts/dock-layout");
+import observable = require("data/observable");
 
 @Component({
     selector: 'app-product',
@@ -26,7 +28,9 @@ export class ProductComponent {
 
     listView: ListView;
 
-    constructor(private cartService: CartService, private scanService: ScanService,
+    //total;
+
+    constructor(public cartService: CartService, private scanService: ScanService,
         private productsService: ProductsService, public page: Page) {
 
         page.actionBar.title = "Easy Shop";
@@ -53,9 +57,9 @@ export class ProductComponent {
     public scanProduct() {
         this.scanService.scan().then((result) => {
             let product = this.productsService.search(result);
+            this.cartService.addItem(result, product);
             this.listView.items.push(product);
-
-            // Add item to the cart
+            //this.total = this.cartService.getTotalPrice();
         });
 
     }

@@ -1,19 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ScanService } from "./scan.service";
-
 import { PRODUCTS } from "./mocks/products_mock";
 
 @Injectable()
-export class ProductsService{
-    constructor(private scanService: ScanService){
-
+export class ProductsService {
+    constructor(private scanService:ScanService) {
     }
 
-    scanProduct(){
+    scanProduct() {
         return this.scanService.scan();
     }
 
-    search(barcode: string){
+    search(barcode:string) {
         return PRODUCTS[barcode];
     }
 }

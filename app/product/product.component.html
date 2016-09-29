@@ -1,8 +1,8 @@
-<StackLayout>
-    <Button text="Scan a product" class="title" (tap)="scanProduct()"></Button>
+<DockLayout stretchLastChild="true">
+    <label dock="top" text="Total price"></label>
+    <label dock="top" [text]="total"></label>
 
-    <!---->
-    <ListView id="items-view">
-    </ListView>
+    <Button dock="bottom" text="Scan a product" class="title" (tap)="scanProduct()"></Button>
 
-</StackLayout>
+    <ListView dock="top" id="items-view"></ListView>
+</DockLayout>

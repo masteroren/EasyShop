@@ -23,10 +23,10 @@ import observable = require("data/observable");
 })
 
 export class ProductComponent {
-    public itemBarcode: string;
-    public isItemExist: boolean = false;
+    public itemBarcode:string;
+    public isItemExist:boolean = false;
 
-    listView: ListView;
+    listView:ListView;
 
     //total;
 

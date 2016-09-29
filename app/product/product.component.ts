@@ -2,7 +2,6 @@ import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
 import { ProductsService } from "../shared/products.service";
-import { Product } from "./product";
 
 import observableArrayModule = require("data/observable-array");
 import { Page } from "ui/page";

@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import application = require("application");
+import { Page } from "ui/page";
+
 
 @Component({
     selector: "easy-shope-main",
@@ -8,7 +10,7 @@ import application = require("application");
 })
 export class AppComponent {
 
-    constructor(){}
+    constructor(private page: Page){}
 
     ngOnInit(){
         if (application.android){
@@ -18,5 +20,6 @@ export class AppComponent {
         if (application.ios){
             
         }
+
     }
 }

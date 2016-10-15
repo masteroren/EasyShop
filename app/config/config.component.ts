@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ConfigService } from "./config.service";
+import { NgIf } from "@angular/common";
 
 import { Page } from "ui/page";
 

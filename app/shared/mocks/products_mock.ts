@@ -1,61 +1,53 @@
 export const PRODUCTS =
-    {
-        "57912189": {
-            "name": "קוטג",
-            "price": "5"
-        },
-        "63557688": {
-            "name": "שוקולד השחר",
-            "price": "3"
-        },
-        "08881175": {
-            "name": "קפה שחור",
-            "price": "5.9"
-        },
-        "19046655": {
-            "name": "אורז",
-            "price": "7"
-        },
-        "20081461": {
-            "name": "שמן זית",
-            "price": "8"
-        },
-        "76318559": {
-            "name": "חלב",
-            "price": "4.5"
+{
+    "673419133999": {
+        "name": "קוטג",
+        "price": 5,
+        details: {
+            sales: [
+                {saleId: 1, description: "1+1 על כל הקולקציה"}
+            ]
+        }
+    },
+    "673419133920": {
+        "name": "שוקולד השחר",
+        "price": 3,
+        details: {
+            sales: [
+                {saleId: 1, description: "סוף עונה"}
+            ]
+        }
+    },
+    "673419133913": {
+        "name": "קפה שחור",
+        "price": 5.9,
+        details: {
+            sales: [
+                {saleId: 1, description: "50% הנחה"}
+            ]
+        }
+    },
+    "673419134002": {
+        "name": "אורז",
+        "price": 7,
+        details: {
+            sales: []
+        }
+    },
+    "67344116": {
+        "name": "שמן זית",
+        "price": 8,
+        details: {
+            sales: [
+            ]
+        }
+    },
+    "673419134057": {
+        "name": "חלב",
+        "price": 4,
+        details: {
+            sales: [
+            ]
         }
     }
-
-    export const PRODUCTS2 =
-    [
-        {
-            "barcode": "57912189",
-            "name": "קוטג",
-            "price": "5"
-        },
-        {
-            "barcode": "63557688",
-            "name": "שוקולד השחר",
-            "price": "3"
-        },
-        {
-            "barcode": "08881175",
-            "name": "קפה שחור",
-            "price": "5.9"
-        },
-        {
-            "barcode": "19046655",
-            "name": "אורז",
-            "price": "7"
-        },
-        {
-            "barcode": "20081461",
-            "name": "שמן זית",
-            "price": "8"
-        },
-        {
-            "barcode": "76318559",
-            "name": "חלב",
-            "price": "4.5"
-        }
-    ]
+};

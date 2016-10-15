@@ -3,4 +3,4 @@ export const STORES = {
         "name": "רמי לוי",
         "address": "ראש העין"
     }
-}
+};

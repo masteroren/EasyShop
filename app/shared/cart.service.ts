@@ -1,20 +1,28 @@
 import { Injectable } from "@angular/core";
-import { PRODUCTSTOBUY } from "../product/productListToBuy";
-import { Product } from "./models/product.model";
 
 @Injectable()
 export class CartService{
-    products = PRODUCTSTOBUY;
+
+    totalPrice: number = 0;
+
+    cartItems = {};
 
     getItems(){
-        return this.products;
+        return this.cartItems;
     }
 
     addItem(barcode, product){
-        this.products[barcode] = product;
+
+        this.cartItems[barcode] = product;
+        this.totalPrice += product.price;
     }
 
     removeItem(barcode){
-        delete this.products[barcode];
+        this.totalPrice -= this.cartItems[barcode].price;
+        delete this.cartItems[barcode];
+    }
+
+    getTotalPrice(){
+        return this.totalPrice;
     }
 }

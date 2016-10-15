@@ -1,28 +1,25 @@
-import { NativeScriptModule } from "nativescript-angular/platform";
 import { NgModule } from "@angular/core"
+
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-import { appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
-
-import { HomeModule } from "./home/home.module";
-import { ProductModule } from "./product/product.module";
-import { ConfigModule } from "./config/config.module";
-import { ProductDetailsModule } from "./productDetails/productDetails.module";
+import { routes, navigatableComponents } from "./app.routes";
 
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
         NativeScriptModule,
+        NativeScriptFormsModule,
+        NativeScriptHttpModule,
         NativeScriptRouterModule,
-        NativeScriptRouterModule.forRoot(appRoutes),
-        HomeModule,
-        ProductModule,
-        ConfigModule,
-        ProductDetailsModule
+        NativeScriptRouterModule.forRoot(routes)
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        navigatableComponents
     ]
 })
 export class AppModule {}

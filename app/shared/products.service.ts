@@ -11,7 +11,7 @@ export class ProductsService {
         return this.scanService.scan();
     }
 
-    search(barcode:string) {
+    search( barcode:string ) {
         return PRODUCTS[barcode];
     }
 }

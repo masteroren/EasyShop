@@ -2,10 +2,9 @@ import { Component } from "@angular/core";
 import application = require("application");
 import { Page } from "ui/page";
 
-
 @Component({
     selector: "easy-shope-main",
-    templateUrl: "app.component.html",
+    template: "<page-router-outlet></page-router-outlet>",
     styleUrls: ["app.css"]
 })
 export class AppComponent {

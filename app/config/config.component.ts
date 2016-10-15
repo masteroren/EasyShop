@@ -8,7 +8,8 @@ import { Page } from "ui/page";
 @Component({
     selector: 'app-config',
     templateUrl: 'config/config.component.html',
-    styleUrls: ['config/config.css']
+    styleUrls: ['config/config.css'],
+    providers: [ConfigService]
 })
 export class ConfigComponent {
 

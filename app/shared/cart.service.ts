@@ -12,7 +12,6 @@ export class CartService{
     }
 
     addItem(barcode, product){
-
         this.cartItems[barcode] = product;
         this.totalPrice += product.price;
     }

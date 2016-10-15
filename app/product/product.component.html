@@ -1,9 +1,16 @@
-    <DockLayout stretchLastChild="true">
-    <label dock="top" text="Total price"></label>
-    <label dock="top" [text]="total" style="color: red; font-size: 20px; font-weight: 600;"></label>
+<DockLayout stretchLastChild="true">
+	<label dock="top" text="Total price"></label>
+	<label dock="top" [text]="total" style="color: red; font-size: 20px; font-weight: 600;"></label>
 
-    <Button dock="bottom" text="Scan a product" class="title" (tap)="scanProduct()" style="background-color: green; color: white; border-radius: 40px;"></Button>
+	<Button dock="bottom" text="Scan a product" class="title" (tap)="scanProduct()" style="background-color: green; color: white; border-radius: 40px;"></Button>
 
-    <ListView dock="top" id="items-view"></ListView>
+	<ListView dock="top" [items]="items" (itemTap)="onItemTap($event)">
+		<template let-item="item">
+			<GridLayout rows="40" columns="50,*" horizontalAlignment="stretch">
+				<Label row="0" col="0" [text]="item.price" horizonalAlignment="right"></Label>
+				<Label row="0" col="1" class="product-name" [text]="item.name" horizonalAlignment="left"></Label>
+			</GridLayout>
+		</template>
+	</ListView>
 
 </DockLayout>

@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
 import { ScanService } from "../shared/scan.service";
-import { Routes, RouterModule } from '@angular/router';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Routes, RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
-import { appRoutes } from "../app.routes";
 import { Page } from "ui/page";
 
 import timer = require("timer");
@@ -20,14 +18,11 @@ import { StoreModel } from "../shared/models/store.model";
 export class HomeComponent {
     store:StoreModel;
 
-    constructor(private scanService:ScanService, private routerExtensions:RouterExtensions, private storeService:StoreService, page:Page) {
+    constructor(private scanService:ScanService, private router: Router, private storeService:StoreService, page: Page) {
         page.actionBar.title = "Easy Shop";
     }
 
     ngOnInit() {
-        console.log("Home -> Init");
-        this.routerExtensions.navigate(["/productDetails/" + 673419133999]);
-
     }
 
     scanStore() {
@@ -35,7 +30,7 @@ export class HomeComponent {
             this.store = this.storeService.getStore(barcode);
             if (this.store) {
                 timer.setTimeout(() => {
-                    this.routerExtensions.navigate(["/product"]);
+                    this.router.navigate(["/product"]);
                 }, 2000);
             }
         });

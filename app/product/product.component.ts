@@ -29,14 +29,17 @@ export class ProductComponent {
     isItemExist: boolean = false;
     items: observableArrayModule.ObservableArray<Object>;
 
-    constructor(public cartService: CartService, private scanService: ScanService, private router: Router,
-        private productsService: ProductsService, public page: Page) {
+    constructor( public cart: CartService, 
+        private scanService: ScanService, 
+        private router: Router,
+        private productsService: ProductsService, 
+        public page: Page ) {
 
         page.actionBar.title = "Easy Shop";
     }
 
     ngOnInit() {
-        this.items = new observableArrayModule.ObservableArray([]);
+        this.items = new observableArrayModule.ObservableArray(this.cart.getItems());
     }
 
     public onItemTap(args) {
@@ -44,11 +47,11 @@ export class ProductComponent {
     }
 
     public scanProduct() {
-        this.scanService.scan().then((result) => {
-            let product = this.productsService.search(result);
-            this.cartService.addItem(result, product);
-            this.items.push(product);
-            // this.router.navigate(["/productDetails/" + result]);
+        this.scanService.scan().then( result => {
+            // let product = this.productsService.search(result);
+            // this.cartService.addItem(result, product);
+            // this.items.push(product);
+            this.router.navigate(["/productDetails/" + result]);
         });
 
     }

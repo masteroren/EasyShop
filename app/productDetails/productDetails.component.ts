@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from "nativescript-angular/router/router-extensions";
 import { ScanService } from "../shared/scan.service";
 import { CartService } from "../shared/cart.service";
@@ -22,14 +22,19 @@ export class ProductDetailsComponent {
     public itemName:string;
     public itemDescription:string;
     public product: any;
-    constructor( private _activatedRoute:ActivatedRoute, private productsService:ProductsService, private routerExtensions:RouterExtensions, private userConfig:ConfigService, private userCart:CartService) {
+
+    constructor( private route:ActivatedRoute, 
+        private productsService: ProductsService, 
+        private router: Router, 
+        private userConfig: ConfigService, 
+        private cart: CartService ) {
     }
 
     ngOnInit() {
         let salesArr;
 
-        this._activatedRoute.params.forEach((param:Params) => {
-            this.itemBarcode = param['id'];
+        this.route.params.subscribe( params => {
+            this.itemBarcode = params['id'];
         });
 
         this.product = this.productsService.search(this.itemBarcode);
@@ -43,7 +48,7 @@ export class ProductDetailsComponent {
     }
 
     addProductToCart() {
-        this.userCart.addItem(this.itemBarcode, this.product);
-        this.routerExtensions.navigate(["/product"]);
+        this.cart.addItem(this.itemBarcode, this.product);
+        this.router.navigate(["/product"]);
     }
 }

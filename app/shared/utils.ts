@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
 import barcodescannerModule = require("nativescript-barcodescanner");
 
-@Injectable()
-export class ScanService{
-
+export class Utils{
     scan(): Promise<string>{
         return barcodescannerModule.scan({
             cancelLabel: "Stop scanning",

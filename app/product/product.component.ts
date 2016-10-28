@@ -1,25 +1,20 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
-import { ScanService } from "../shared/scan.service";
 import { Router } from '@angular/router';
-import { CartService } from "../shared/cart.service";
-import { ProductsService } from "../shared/products.service";
+import observableArrayModule = require("data/observable-array");
+import { Page } from "ui/page";
+import dockModule = require("ui/layouts/dock-layout");
+import observable = require("data/observable");
 
 import { Product } from "../shared/models/product.model";
 
-import observableArrayModule = require("data/observable-array");
-import { Page } from "ui/page";
-import { ListView } from "ui/list-view";
-import dockModule = require("ui/layouts/dock-layout");
-import observable = require("data/observable");
+import { Utils } from "../shared/utils";
+import { CartService } from "../shared/cart.service";
+import { ProductsService } from "../shared/products.service";
 
 @Component({
     selector: 'app-product',
     templateUrl: 'product/product.component.html',
-    providers: [
-        ScanService,
-        CartService,
-        ProductsService
-    ],
+    providers: [ProductsService],
     styleUrls: ['product/product.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -28,14 +23,11 @@ export class ProductComponent {
     itemBarcode: string;
     isItemExist: boolean = false;
     items: observableArrayModule.ObservableArray<Object>;
+    utils: Utils;
 
-    constructor( public cart: CartService, 
-        private scanService: ScanService, 
-        private router: Router,
-        private productsService: ProductsService, 
-        public page: Page ) {
-
+    constructor(private cart: CartService, private router: Router, public page: Page) {
         page.actionBar.title = "Easy Shop";
+        this.utils = new Utils();
     }
 
     ngOnInit() {
@@ -47,10 +39,7 @@ export class ProductComponent {
     }
 
     public scanProduct() {
-        this.scanService.scan().then( result => {
-            // let product = this.productsService.search(result);
-            // this.cartService.addItem(result, product);
-            // this.items.push(product);
+        this.utils.scan().then(result => {
             this.router.navigate(["/productDetails/" + result]);
         });
 

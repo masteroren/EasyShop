@@ -1,0 +1,43 @@
+﻿/*Page {
+  background-color: red;
+  font-size: 15;
+}*/
+
+/*.list-page {
+  background-image: url("res://bg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}*/
+
+button, label, stack-layout {
+    horizontal-align: center;    
+}
+
+button {
+    font-size: 38;
+}
+
+.title {
+    font-size: 30;
+    margin: 20;
+}
+
+.message {
+    font-size: 20;
+    color: #284848;
+    text-align: center;
+    margin: 0 20;
+}
+
+.odd {
+    background-color: red;
+}
+
+.even {
+    background-color: blue;
+}
+
+.list-view{
+    background-color: hotpink;
+}

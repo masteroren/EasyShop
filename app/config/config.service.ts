@@ -10,7 +10,6 @@ export class ConfigService {
         this.model = new ConfigModel(true, false);
     }
 
-
     get Config(){
         return this.model;
     }

@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import application = require("application");
-import { Page } from "ui/page";
 
 @Component({
     selector: "easy-shope-main",
@@ -9,7 +8,7 @@ import { Page } from "ui/page";
 })
 export class AppComponent {
 
-    constructor(private page: Page){}
+    constructor(){}
 
     ngOnInit(){
         if (application.android){

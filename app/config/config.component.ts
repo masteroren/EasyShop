@@ -1,19 +1,15 @@
 import { Component } from "@angular/core";
 import { ConfigService } from "./config.service";
-import { NgIf } from "@angular/common";
-
 import { Page } from "ui/page";
-
 
 @Component({
     selector: 'app-config',
     templateUrl: 'config/config.component.html',
-    styleUrls: ['config/config.css'],
-    providers: [ConfigService]
+    styleUrls: ['config/config.css']
 })
 export class ConfigComponent {
 
-    constructor(public configService: ConfigService, page: Page) {
+    constructor(private configService: ConfigService, page: Page) {
         page.actionBar.title = "Easy Shop"; 
     }
 
